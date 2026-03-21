@@ -48,7 +48,9 @@ pip install -r requirements.txt
 
 ### 模型下载
 
-Genos 模型需要从 Hugging Face 下载：
+Genos 模型支持从以下三个平台下载：
+
+#### 1. Hugging Face（推荐）
 
 ```bash
 # 安装 huggingface-cli
@@ -61,14 +63,45 @@ huggingface-cli login
 huggingface-cli download zhejianglab/Genos-1___2B --local-dir ./models/Genos-1___2B
 ```
 
+#### 2. ModelScope（魔搭社区）
+
+```bash
+# 安装 modelscope
+pip install modelscope
+
+# 下载模型
+python -c "from modelscope import snapshot_download; snapshot_download('zhejianglab/Genos-1___2B', cache_dir='./models')"
+```
+
+#### 3. GitHub Releases
+
+```bash
+# 访问 GitHub Releases 页面下载
+# https://github.com/zhejianglab/Genos/releases
+
+# 或使用命令行下载
+curl -L -o genos-1.2b.zip https://github.com/zhejianglab/Genos/releases/download/v1.0/Genos-1___2B.zip
+unzip genos-1.2b.zip -d ./models/Genos-1___2B
+```
+
 或者在代码中自动下载（首次运行时）：
 
 ```python
 from genos_dna import load_model
 
-# 首次运行会自动下载模型
+# 首次运行会自动下载模型（优先从 Hugging Face 下载）
 model, tokenizer = load_model()
 ```
+
+**模型信息**
+
+| 模型名称 | 参数量 | Hugging Face | ModelScope | GitHub |
+|---------|--------|-------------|------------|--------|
+| Genos-1.2B | 1.2B | 🤗 | 🤖 | ✅ |
+| Genos-10B | 10B | 🤗 | 🤖 | ✅ |
+| Genos-10B-v2 | 10B | 🤗 | 🤖 | ✅ |
+
+**推荐**：Genos-1.2B 模型体积较小，适合快速测试和开发；Genos-10B 和 Genos-10B-v2 模型精度更高，适合生产环境。
 
 ## 使用方法
 

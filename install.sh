@@ -81,22 +81,64 @@ DOWNLOAD_MODEL=${DOWNLOAD_MODEL:-n}
 
 if [ "$DOWNLOAD_MODEL" = "y" ]; then
     echo ""
-    read -p "Hugging Face Token (可选，用于下载私有模型): " HF_TOKEN
+    echo "选择下载源:"
+    echo "1. Hugging Face (推荐)"
+    echo "2. ModelScope (魔搭社区)"
+    echo "3. GitHub Releases"
+    read -p "请选择下载源 (1/2/3) [1]: " DOWNLOAD_SOURCE
+    DOWNLOAD_SOURCE=${DOWNLOAD_SOURCE:-1}
     
-    if [ -n "$HF_TOKEN" ]; then
-        huggingface-cli login --token "$HF_TOKEN"
-    fi
-    
-    echo "下载 Genos 模型..."
-    echo "注意: 模型较大（约 2GB），下载可能需要一些时间"
-    
-    if command -v huggingface-cli &> /dev/null; then
-        huggingface-cli download zhejianglab/Genos-1___2B --local-dir ./models/Genos-1___2B
-        echo "✓ 模型已下载"
-    else
-        echo "✗ 未找到 huggingface-cli，请先安装: pip install huggingface-hub"
-        echo "或手动下载模型到 ./models/Genos-1___2B 目录"
-    fi
+    case $DOWNLOAD_SOURCE in
+        1)
+            echo ""
+            read -p "Hugging Face Token (可选，用于下载私有模型): " HF_TOKEN
+            
+            if [ -n "$HF_TOKEN" ]; then
+                huggingface-cli login --token "$HF_TOKEN"
+            fi
+            
+            echo "从 Hugging Face 下载 Genos 模型..."
+            echo "注意: 模型较大（约 2GB），下载可能需要一些时间"
+            
+            if command -v huggingface-cli &> /dev/null; then
+                huggingface-cli download zhejianglab/Genos-1___2B --local-dir ./models/Genos-1___2B
+                echo "✓ 模型已从 Hugging Face 下载"
+            else
+                echo "✗ 未找到 huggingface-cli，请先安装: pip install huggingface-hub"
+                echo "或手动下载模型到 ./models/Genos-1___2B 目录"
+            fi
+            ;;
+        2)
+            echo "从 ModelScope 下载 Genos 模型..."
+            echo "注意: 模型较大（约 2GB），下载可能需要一些时间"
+            
+            if command -v pip3 &> /dev/null; then
+                pip3 install modelscope
+                python3 -c "from modelscope import snapshot_download; snapshot_download('zhejianglab/Genos-1___2B', cache_dir='./models')"
+                echo "✓ 模型已从 ModelScope 下载"
+            else
+                echo "✗ 未找到 pip，请先安装 pip"
+                echo "或手动下载模型到 ./models/Genos-1___2B 目录"
+            fi
+            ;;
+        3)
+            echo "从 GitHub Releases 下载 Genos 模型..."
+            echo "注意: 模型较大（约 2GB），下载可能需要一些时间"
+            
+            if command -v curl &> /dev/null && command -v unzip &> /dev/null; then
+                curl -L -o genos-1.2b.zip "https://github.com/zhejianglab/Genos/releases/download/v1.0/Genos-1___2B.zip"
+                unzip -o genos-1.2b.zip -d ./models/Genos-1___2B
+                rm -f genos-1.2b.zip
+                echo "✓ 模型已从 GitHub Releases 下载"
+            else
+                echo "✗ 未找到 curl 或 unzip，请先安装"
+                echo "或手动下载模型到 ./models/Genos-1___2B 目录"
+            fi
+            ;;
+        *)
+            echo "✗ 无效的选择，请手动下载模型到 ./models/Genos-1___2B 目录"
+            ;;
+    esac
 fi
 
 # 创建配置文件
