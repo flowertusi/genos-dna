@@ -10,7 +10,7 @@
 ## 更新日志
 
 ### v1.0.1 (2026-03-22)
-- ✅ 修复状态文件路径不一致问题（`./state/.model_loaded` → `./.model_loaded`）
+- ✅ 修复状态文件路径不一致问题（`./state/.model_loaded` → `./scripts/.model_loaded`）
 - ✅ 添加详细的安全说明和风险提示
 - ✅ 优化模型下载说明，支持三个下载源（Hugging Face、ModelScope、GitHub）
 - ✅ 添加模型信息表格，包含每个版本的下载链接

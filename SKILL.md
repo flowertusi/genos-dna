@@ -68,7 +68,7 @@ description: 使用 Genos 模型进行 DNA 序列分析。当用户提到 DNA、
 
 ### 检查模型状态
 
-模型状态记录在 `./state/.model_loaded` 文件中（相对于项目根目录）。
+模型状态记录在 `./scripts/.model_loaded` 文件中（相对于项目根目录）。
 
 - 如果文件存在且内容为 `loaded`，表示模型已启动
 - 如果文件不存在或内容不是 `loaded`，需要先启动模型
@@ -122,6 +122,6 @@ python3 your_script.py
 ```json
 {
     "model_path": "./models/Genos-1___2B",
-    "state_file": "./state/.model_loaded"
+    "state_file": "./scripts/.model_loaded"
 }
 ```

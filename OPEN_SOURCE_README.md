@@ -81,7 +81,7 @@ print(f"GC 含量: {result['gc_content']:.2f}%")
     "model_path": "./models/Genos-1___2B",
     "device_map": "cpu",
     "torch_dtype": "float16",
-    "state_file": "./state/.model_loaded"
+    "state_file": "./scripts/.model_loaded"
 }
 ```
 
@@ -102,7 +102,7 @@ cp -r genos_dna /path/to/system/skills/
 export GENOS_MODEL_PATH="/path/to/your/model"
 
 # 设置状态文件路径（可选）
-export GENOS_STATUS_FILE="/path/to/your/state/.model_loaded"
+export GENOS_STATUS_FILE="/path/to/your/scripts/.model_loaded"
 ```
 
 **或者使用配置文件方式**：

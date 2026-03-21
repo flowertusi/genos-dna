@@ -18,8 +18,9 @@ _model_path_env = os.environ.get('GENOS_MODEL_PATH', './models/Genos-1___2B')
 
 # 模型状态文件路径
 # 可以通过环境变量 GENOS_STATUS_FILE 自定义状态文件路径
-# 默认路径为 ./.model_loaded (相对于项目根目录)
-_model_status_file_env = os.environ.get('GENOS_STATUS_FILE', './.model_loaded')
+# 默认路径为 scripts/.model_loaded (相对于项目根目录)
+# 使用 scripts/ 目录而不是根目录，避免影响 ClawHub 发布
+_model_status_file_env = os.environ.get('GENOS_STATUS_FILE', './scripts/.model_loaded')
 
 # 加载配置文件（如果存在）
 _config = None

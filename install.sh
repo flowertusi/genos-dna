@@ -150,7 +150,7 @@ if [ ! -f "config.json" ]; then
     "model_path": "./models/Genos-1___2B",
     "device_map": "cpu",
     "torch_dtype": "float16",
-    "state_file": "./state/.model_loaded"
+    "state_file": "./scripts/.model_loaded"
 }
 EOF
     echo "✓ 配置文件已创建 (config.json)"
