@@ -35,7 +35,7 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/yourusername/genos-dna.git
+git clone https://github.com/flowertusi/genos-dna.git
 cd genos-dna
 
 # 创建虚拟环境（推荐）
@@ -76,8 +76,8 @@ python -c "from modelscope import snapshot_download; snapshot_download('zhejiang
 #### 3. GitHub Releases
 
 ```bash
-# 访问 GitHub Releases 页面下载
-# https://github.com/zhejianglab/Genos/releases
+# 访问 Genos GitHub 仓库
+# https://github.com/zhejianglab/Genos
 
 # 或使用命令行下载
 curl -L -o genos-1.2b.zip https://github.com/zhejianglab/Genos/releases/download/v1.0/Genos-1___2B.zip
