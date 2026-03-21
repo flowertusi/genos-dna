@@ -9,13 +9,13 @@ genos_dna/
 ├── scripts/
 │   ├── __init__.py
 │   └── genos_dna.py          # 核心脚本
+├── .git/                     # Git 版本控制（发布时删除）
+├── config.json               # 配置文件
 ├── requirements.txt          # Python 依赖
 ├── README.md                 # 详细说明文档
-├── example.py               # 使用示例
-├── install.sh               # 一键安装脚本
-├── config.json.example      # 配置模板
-├── LICENSE                  # MIT 许可证
-└── SKILL.md                 # Skill 文档
+├── SKILL.md                  # Skill 文档
+├── OPEN_SOURCE_README.md     # 本文件
+└── example.py               # 使用示例
 ```
 
 ## 主要改进
