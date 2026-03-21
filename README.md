@@ -3,8 +3,23 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-orange.svg)](https://pytorch.org/)
+[![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)](https://github.com/flowertusi/genos-dna/releases)
 
 基于之江实验室 Genos-1.2B 模型的 DNA 序列分析工具，用于分析和预测 DNA 碱基序列。
+
+## 更新日志
+
+### v1.0.1 (2026-03-22)
+- ✅ 修复状态文件路径不一致问题（`./state/.model_loaded` → `./.model_loaded`）
+- ✅ 添加详细的安全说明和风险提示
+- ✅ 优化模型下载说明，支持三个下载源（Hugging Face、ModelScope、GitHub）
+- ✅ 添加模型信息表格，包含每个版本的下载链接
+
+### v1.0.0 (2026-03-21)
+- ✅ 初始版本发布
+- ✅ 支持 DNA 序列分析、碱基预测、特征提取
+- ✅ 支持命令行和 Python 两种使用方式
+- ✅ 支持一键安装脚本
 
 ## 功能特点
 
