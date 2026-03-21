@@ -289,6 +289,39 @@ for seq in sequences:
 3. **首次运行**: 首次运行会自动下载模型，可能需要一些时间
 4. **GPU 支持**: 当前版本仅支持 CPU 运行，如需 GPU 支持请修改 `device_map` 参数
 
+## 安全说明
+
+### ⚠️ 重要安全提示
+
+本技能使用 `transformers` 库的 `trust_remote_code=True` 参数加载 Genos 模型。这允许执行模型仓库中包含的自定义 Python 代码，存在一定的安全风险。
+
+**请务必注意以下安全建议**：
+
+1. **验证模型来源**：只从官方渠道下载 Genos 模型
+   - Hugging Face: https://huggingface.co/ZhejiangLab
+   - ModelScope: https://modelscope.cn/models/zhejianglab
+   - GitHub: https://github.com/zhejianglab/Genos
+
+2. **验证模型完整性**：下载后建议验证模型文件的校验和或签名
+
+3. **隔离运行环境**：建议在容器或虚拟机中运行，限制权限
+
+4. **检查 install.sh**：安装脚本会从外部源下载模型文件，请在运行前检查脚本内容
+
+5. **谨慎处理 Token**：如果使用 Hugging Face Token，请确保只在信任的环境中使用
+
+### 安装后验证
+
+安装完成后，建议进行以下验证：
+
+```bash
+# 检查模型文件完整性
+ls -lh ./models/Genos-1___2B/
+
+# 运行测试
+python3 example.py
+```
+
 ## 故障排除
 
 ### 模型加载失败

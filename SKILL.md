@@ -87,7 +87,7 @@ import sys
 sys.path.insert(0, './scripts')
 from genos_dna import load_model
 load_model()
-with open('./state/.model_loaded', 'w') as f:
+with open('./.model_loaded', 'w') as f:
     f.write('loaded')
 print('Model loaded and status saved')
 "
@@ -96,7 +96,7 @@ print('Model loaded and status saved')
 ### 自动化检查
 
 AI 助手在调用技能时应自动完成以下步骤：
-1. 检查 `./state/.model_loaded` 文件是否存在且内容为 `loaded`
+1. 检查 `./.model_loaded` 文件是否存在且内容为 `loaded`
 2. 如果模型未启动，先执行上述启动命令
 3. 确认模型启动后再调用技能函数
 
