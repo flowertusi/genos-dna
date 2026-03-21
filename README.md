@@ -97,9 +97,9 @@ model, tokenizer = load_model()
 
 | 模型名称 | 参数量 | Hugging Face | ModelScope | GitHub |
 |---------|--------|-------------|------------|--------|
-| Genos-1.2B | 1.2B | 🤗 | 🤖 | ✅ |
-| Genos-10B | 10B | 🤗 | 🤖 | ✅ |
-| Genos-10B-v2 | 10B | 🤗 | 🤖 | ✅ |
+| Genos-1.2B | 1.2B | [🤗](https://huggingface.co/ZhejiangLab/Genos-1.2B) | [🤖](https://modelscope.cn/models/zhejianglab/Genos-1.2B) | [🔗](https://github.com/zhejianglab/Genos) |
+| Genos-10B | 10B | [🤗](https://huggingface.co/ZhejiangLab/Genos-10B) | [🤖](https://modelscope.cn/models/zhejianglab/Genos-10B) | [🔗](https://github.com/zhejianglab/Genos) |
+| Genos-10B-v2 | 10B | [🤗](https://huggingface.co/ZhejiangLab/Genos-10B-v2) | [🤖](https://modelscope.cn/models/zhejianglab/Genos-10B-v2) | [🔗](https://github.com/zhejianglab/Genos) |
 
 **推荐**：Genos-1.2B 模型体积较小，适合快速测试和开发；Genos-10B 和 Genos-10B-v2 模型精度更高，适合生产环境。
 
