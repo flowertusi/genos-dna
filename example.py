@@ -5,7 +5,13 @@ Genos DNA 序列分析 - 示例脚本
 """
 
 import sys
+import os
 import json
+
+# 将 scripts 目录添加到 Python 路径
+script_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'scripts')
+sys.path.insert(0, script_dir)
+
 from genos_dna import (
     analyze_dna_sequence,
     predict_next_base,
@@ -33,12 +39,10 @@ def example_1_simple_analysis():
     print(f"  原始长度: {result['original_length']}")
     print(f"  清理长度: {result['cleaned_length']}")
     print(f"  GC 含量: {result['gc_content']:.2f}%")
-    print(f"  序列预览: {result['sequence_preview']}")
     
-    print(f"\n碱基频率:")
-    for base, count in result['base_frequency'].items():
-        percentage = (count / result['cleaned_length']) * 100
-        print(f"  {base}: {count} ({percentage:.2f}%)")
+    print(f"\n碱基组成:")
+    for base, percentage in result['base_composition'].items():
+        print(f"  {base}: {percentage:.2f}%")
 
 
 def example_2_base_prediction():
