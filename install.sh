@@ -158,6 +158,24 @@ else
     echo "✓ 配置文件已存在"
 fi
 
+# 预加载模型（安装时加载，避免运行时动态执行）
+echo ""
+echo "预加载模型..."
+python3 -c "
+import sys
+sys.path.insert(0, 'scripts')
+try:
+    from genos_dna import load_model
+    print('正在加载模型，请等待...')
+    model, tokenizer = load_model()
+    print('✓ 模型预加载成功')
+except Exception as e:
+    print('✗ 模型预加载失败')
+    print(f'  错误: {e}')
+    print('  请确保模型已下载到 ./models/Genos-1___2B 目录')
+    print('  或运行 install.sh 重新安装')
+"
+
 # 测试安装
 echo ""
 echo "测试安装..."

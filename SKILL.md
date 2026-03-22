@@ -70,24 +70,20 @@ description: 使用 Genos 模型进行 DNA 序列分析。当用户提到 DNA、
 
 模型状态记录在 `./scripts/.model_loaded` 文件中（相对于项目根目录）。
 
-- 如果文件存在且内容为 `loaded`，表示模型已启动
-- 如果文件不存在或内容不是 `loaded`，需要先启动模型
+- 如果文件存在且内容为 `loaded`，表示模型已预加载
+- 如果文件不存在或内容不是 `loaded`，需要先运行安装脚本预加载模型
 
-### 启动模型
+### 预加载模型
 
-如果模型未启动，执行以下命令启动：
+模型在安装时会自动预加载。如果需要手动预加载，运行：
 
 ```bash
-# 设置模型路径（可选，默认为 ./models/Genos-1___2B）
-export GENOS_MODEL_PATH="./models/Genos-1___2B"
-
-# 启动模型
 python3 -c "
 import sys
-sys.path.insert(0, './scripts')
+sys.path.insert(0, 'scripts')
 from genos_dna import load_model
 load_model()
-print('Model loaded and status saved')
+print('Model loaded successfully')
 "
 ```
 
@@ -95,8 +91,8 @@ print('Model loaded and status saved')
 
 AI 助手在调用技能时应自动完成以下步骤：
 1. 检查 `./scripts/.model_loaded` 文件是否存在且内容为 `loaded`
-2. 如果模型未启动，先执行上述启动命令
-3. 确认模型启动后再调用技能函数
+2. 如果模型未预加载，提示用户运行安装脚本
+3. 确认模型加载后再调用技能函数
 
 ### 使用环境变量配置
 
