@@ -40,6 +40,11 @@ def load_config():
             _config = {}
     return _config
 
+# 获取项目根目录（scripts 的父目录）
+def get_project_root():
+    """获取项目根目录"""
+    return os.path.dirname(os.path.dirname(__file__))
+
 # 使用环境变量作为默认值
 model_path = _model_path_env
 model_status_file = _model_status_file_env
@@ -50,6 +55,12 @@ if 'model_path' in config and not os.environ.get('GENOS_MODEL_PATH'):
     model_path = config['model_path']
 if 'state_file' in config and not os.environ.get('GENOS_STATUS_FILE'):
     model_status_file = config['state_file']
+
+# 将相对路径转换为绝对路径（相对于项目根目录）
+if not os.path.isabs(model_path):
+    model_path = os.path.join(get_project_root(), model_path)
+if not os.path.isabs(model_status_file):
+    model_status_file = os.path.join(get_project_root(), model_status_file)
 
 _model = None
 _tokenizer = None
